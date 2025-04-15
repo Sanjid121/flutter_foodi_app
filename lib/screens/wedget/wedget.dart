@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 onbordcard(BuildContext context, String img) {
   final screenhight = MediaQuery.of(context).size.height;
+  final screenwidth = MediaQuery.of(context).size.width;
   return Container(
     width: MediaQuery.of(context).size.width,
     height: screenhight * 0.5 + 34,
@@ -66,5 +67,101 @@ onbordbutton(String text) {
             color: Color(0xffFFFFFF)),
       ),
     ),
+  );
+}
+
+foodcard() {
+  return Row(
+   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+   
+    children: [
+  
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        child: Container(
+          width: 152,
+          height: 183,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1), // soft shadow
+                  spreadRadius: 0,
+                  blurRadius: 1,
+                  offset: const Offset(0, 3),
+                )
+              ]),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 16,
+                  right: 20,
+                ),
+                child:
+                    Container(child: Image.asset('assets/images/Vector.png')),
+              ),
+              Center(
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  child: Image.asset(
+                      'assets/images/Honey-Lime-Peach-Fruit-Salad-.png'),
+                ),
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              Center(
+                child: Text("Honey lime combo",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    )),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 16,
+                          height: 12.800000190734863,
+                          child: Image.asset('assets/images/price.png'),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text("2,000",
+                            style: TextStyle(
+                              color: Color(0xffF08626),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                            ))
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 15),
+                    child: Container(
+                      child: Image.asset('assets/images/add_icon.png'),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    ],
   );
 }

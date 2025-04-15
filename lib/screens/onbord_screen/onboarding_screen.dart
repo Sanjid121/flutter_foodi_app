@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_foodi_app/screens/onbord_screen/name_input_screen.dart';
 import 'package:flutter_foodi_app/screens/wedget/wedget.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);

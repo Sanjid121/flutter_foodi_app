@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_foodi_app/model/prodact_view.dart';
 
+final alldata = product;
 onbordcard(BuildContext context, String img) {
   final screenhight = MediaQuery.of(context).size.height;
   final screenwidth = MediaQuery.of(context).size.width;
@@ -70,12 +72,10 @@ onbordbutton(String text) {
   );
 }
 
-foodcard() {
+foodcard(String img, String txt,String tx) {
   return Row(
-   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-   
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-  
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Container(
@@ -108,15 +108,14 @@ foodcard() {
                 child: Container(
                   width: 80,
                   height: 80,
-                  child: Image.asset(
-                      'assets/images/Honey-Lime-Peach-Fruit-Salad-.png'),
+                  child: Image.asset(img),
                 ),
               ),
               SizedBox(
                 height: 8,
               ),
               Center(
-                child: Text("Honey lime combo",
+                child: Text(txt,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -141,7 +140,7 @@ foodcard() {
                         SizedBox(
                           width: 5,
                         ),
-                        Text("2,000",
+                        Text(tx,
                             style: TextStyle(
                               color: Color(0xffF08626),
                               fontSize: 14,

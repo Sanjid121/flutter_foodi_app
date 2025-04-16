@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import 'package:flutter_foodi_app/model/prodact_view.dart';
+
 import 'package:flutter_foodi_app/screens/wedget/wedget.dart';
 
 class Home extends StatefulWidget {
@@ -7,6 +10,8 @@ class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
+
+final allprodact = product;
 
 class _HomeState extends State<Home> {
   @override
@@ -118,30 +123,36 @@ class _HomeState extends State<Home> {
                   fontWeight: FontWeight.w500,
                 )),
           ),
-         
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-               foodcard(),
-               foodcard(),
-               
-              
+              foodcard(
+                allprodact[0].img!,allprodact[0].name!,
+                allprodact[0].pric!,
+                
+              ),
+              foodcard(allprodact[1].img!, allprodact[1].name!,
+              allprodact[1].pric!,
+              ),
             ],
           ),
-          SizedBox(height: 48,),
+          SizedBox(
+            height: 48,
+          ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                spacing: 50,
-                children: [
-                  Chip(label: Text('Hottest'), backgroundColor: Colors.orange[100]),
-                  Chip(label: Text('Popular')),
-                  Chip(label: Text('New combo')),
-                  Chip(label: Text('Top')),
-                ],
-              ),
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              spacing: 50,
+              children: [
+                Chip(
+                    label: Text('Hottest'),
+                    backgroundColor: Colors.orange[100]),
+                Chip(label: Text('')),
+                Chip(label: Text('New combo')),
+                Chip(label: Text('Top')),
+              ],
+            ),
           ),
         ],
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_foodi_app/model/prodact_view.dart';
+import 'package:flutter_foodi_app/screens/Home_screen/card_detils.dart';
 
 import 'package:flutter_foodi_app/screens/wedget/wedget.dart';
 
@@ -12,8 +13,9 @@ class Home extends StatefulWidget {
 }
 
 final allprodact = product;
-  List<String> tabs = ["Hottest", "Popular", "New", "Combo", "Top"];
-  int selectedIndex = 0;
+List<String> tabs = ["Hottest", "Popular", "New", "Combo", "Top"];
+int selectedIndex = 0;
+
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
@@ -129,72 +131,83 @@ class _HomeState extends State<Home> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                foodcard(
-                  allprodact[0].img!,allprodact[0].name!,
-                  allprodact[0].pric!,context
-                  
-                ),
+                foodcard(allprodact[0].img!, allprodact[0].name!,
+                    allprodact[0].pric!, context),
                 foodcard(allprodact[1].img!, allprodact[1].name!,
-                allprodact[1].pric!,context
-                ),
+                    allprodact[1].pric!, context),
               ],
             ),
             SizedBox(
               height: 48,
             ),
-          Container(
-        height: 50,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: List.generate(tabs.length, (index) {
-            bool isSelected = selectedIndex == index;
-            return GestureDetector(
-              onTap: () {
-                setState(() {
-                  selectedIndex = index;
-                });
-              },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+            Container(
+              height: 50,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: List.generate(tabs.length, (index) {
+                  bool isSelected = selectedIndex == index;
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedIndex = index;
+                      });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          child: Text(
+                            tabs[index],
+                            style: TextStyle(
+                              fontSize: isSelected ? 24 : 16,
+                              fontWeight: isSelected
+                                  ? FontWeight.w500
+                                  : FontWeight.normal,
+                              color: isSelected
+                                  ? Color(0xff27214D)
+                                  : Color(0xff938DB5),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 4),
+                        Container(
+                          height: 3,
+                          width: 22,
+                          decoration: BoxDecoration(
+                            color: isSelected
+                                ? Color(0xfffFFA451)
+                                : Colors.transparent,
+                          ),
+                        )
+                      ],
+                    ),
+                  );
+                }),
+              ),
+            ),
+            SizedBox(
+              height: 24,
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                spacing: 16,
                 children: [
-                  Container(
-                    
-                    child: Text(
-                      tabs[index],
-                      style: TextStyle(
-                        fontSize: isSelected? 24 :16,
-                        fontWeight: isSelected ? FontWeight.w500 : FontWeight.normal,
-                        color: isSelected ? Color(0xff27214D) : Color(0xff938DB5),
-                      ),
-                    ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => CardDetils()));
+                    },
+                    child: rowfoodcard(allprodact[2].img!, allprodact[2].name!,
+                        allprodact[2].pric!, context, 0xfffff9ea),
                   ),
-                  SizedBox(height: 4),
-                  Container(
-                    height: 3,
-                    width: 22,
-                    decoration: BoxDecoration(
-                      color: isSelected ? Color(0xfffFFA451) : Colors.transparent,
-                     
-                    ),
-                  )
+                  rowfoodcard(allprodact[3].img!, allprodact[3].name!,
+                      allprodact[3].pric!, context, 0xfffef0f0),
+                  rowfoodcard(allprodact[4].img!, allprodact[4].name!,
+                      allprodact[4].pric!, context, 0xfff1eff6),
                 ],
               ),
-            );
-          }),
-        ),
-            ),
-            SizedBox(height: 24,),
-            SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-            spacing: 16,
-          children: [
-           rowfoodcard(allprodact[2].img!,allprodact[2].name! , allprodact[2].pric!, context ,0xfffff9ea ),   
-            rowfoodcard(allprodact[3].img!,allprodact[3].name! , allprodact[3].pric!, context, 0xfffef0f0 ), 
-            rowfoodcard(allprodact[4].img!,allprodact[4].name! , allprodact[4].pric!, context , 0xfff1eff6),
-        ],),
             )
-        
           ],
         ),
       ),
